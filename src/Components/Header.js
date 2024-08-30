@@ -1,32 +1,25 @@
 "use client";
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// import DropdownCategories from './DropdownCategories';
-// import Chilheader from './Chilheader';
-// import ChildSmHeader from './ChildSmHeader';
 
 import { IoIosArrowDown } from "react-icons/io";
 import { RiArrowUpDownFill } from "react-icons/ri";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { SlHandbag } from "react-icons/sl";
 import { FiSearch } from "react-icons/fi";
-import { FaRegUser } from "react-icons/fa6";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { FaRegUser } from "react-icons/fa";
+import { HiOutlineMenuAlt2, HiOutlineMenuAlt3 } from "react-icons/hi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TbPhoneCall } from "react-icons/tb";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 function Header() {
   const [dropdown, setDropdown] = useState(false);
-  const handleDropdown = () => {
-    setDropdown(!dropdown);
-  };
+  const handleDropdown = () => setDropdown(!dropdown);
 
   const [scrollY, setScrollY] = useState(0);
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
+  const handleScroll = () => setScrollY(window.scrollY);
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -35,9 +28,7 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    // Select the target node
     const targetNode = document.getElementById('your-element-id');
-    // Define the callback function to execute when mutations are observed
     const callback = (mutationsList) => {
       for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
@@ -52,17 +43,15 @@ function Header() {
     if (targetNode) {
       observer.observe(targetNode, config);
     }
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
-  
+
   return (
     <div>
       <div className={`bg-white w-full fixed left-0 z-30 top-0 -translate-y-28 
         ${scrollY >= 250 ? "transition-all duration-300 top-0 translate-y-0" : "transition-all duration-300 -translate-y-28"}`}>
-        {/* <Chilheader/>
-        <ChildSmHeader/> */}
+         {/* <Chilheader/> */}
+         {/* <ChildSmHeader/> */}
       </div>
       
       <div>
@@ -73,10 +62,10 @@ function Header() {
                 <Image
                   className='w-[28px]'
                   src="/Assets/car.png"
-                  alt="Car"
-                  width={28}
-                  height={28}
-                  style={{ objectFit: 'contain' }} 
+                  alt="Logo"
+                  width={300}
+                  height={300}
+                  style={{ height: 'auto', objectFit: 'contain' }} 
                   priority
                 />
               </div>
@@ -105,21 +94,20 @@ function Header() {
             </div>
           </div>
         </div>
+
         <div className='hidden lg:block h-[104px] border-b border-gray-200'>
           <div className='max-w-[1320px] mx-auto flex items-center justify-between h-full 2xl:px-3 xl:px-20 px-10'>
-            <div className=''>
-              <div className='w-[135px] h-[135px] relative'>
-                <Image
-                  className='w-full h-full'
-                  src="/Assets/logo.png"
-                  alt="Logo"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 135px" 
-                  style={{ objectFit: 'contain' }} 
-                  priority
-                />
-              </div>
-            </div>    
+            <div className='w-[135px] h-[135px] relative'>
+              <Image
+                className='w-full h-full'
+                src="/Assets/logo.png"
+                alt="Logo"
+                fill
+                sizes="(max-width: 768px) 100vw, 135px" 
+                style={{ objectFit: 'contain' }} 
+                priority
+              />
+            </div>
             <div className='xl:pl-24 2xl:pl-6'>
                <div className='2xl:w-[554px] max-w-[554px] border-2 border-[#0989FF] h-[50px] flex items-center'>
                  <button className='h-[46px] text-sm focus:outline-none flex items-center pr-4 2xl:pr-0'>
@@ -148,76 +136,58 @@ function Header() {
                   <FaRegUser/>
                 </div>
                 <div className='hidden xl:block'>
-                  <p className='text-gray-500 text-[11.5px] -tracking-wide font-semibold'>
-                    Hello, Sign In
-                  </p>
-                  <p className='text-gray-700 text-[13.5px] -tracking-wide font-semibold'>
-                    Your Account
-                  </p>
+                  <p className='text-gray-500 text-[11.5px] -tracking-wide font-semibold'>Hello, Sign In</p>
+                  <p className='text-gray-700 text-[13.5px] -tracking-wide font-semibold'>Your Account</p>
                 </div>
               </div>
-              <div className=''>
-                <div className='flex items-center space-x-4 xl:space-x-3 2xl:space-x-4'>
-                  <button>
-                    <RiArrowUpDownFill className='text-[25px]'/>
-                  </button>
-                  <button className='relative'>
-                      <IoMdHeartEmpty className='text-[27px]'/>
-                      <p className='bg-[#FD4B6B] absolute -top-3 -right-2.5 rounded-full text-white font-semibold text-xs flex justify-center items-center w-6 h-6 tracking-wider'>0</p>
-                  </button>
-                  <button className='relative'>
-                      <SlHandbag className='text-[25px]'/>
-                      <p className='bg-[#FD4B6B] absolute -top-3 -right-2.5 rounded-full text-white font-semibold text-xs flex justify-center items-center w-6 h-6'>9+</p>
-                  </button>
-                </div>
+              <div className='flex items-center space-x-4 xl:space-x-3 2xl:space-x-4'>
+                <button>
+                  <RiArrowUpDownFill className='text-[25px]'/>
+                </button>
+                <button className='relative'>
+                    <IoMdHeartEmpty className='text-[27px]'/>
+                    <p className='bg-[#FD4B6B] absolute -top-3 -right-2.5 rounded-full text-white font-semibold text-xs flex justify-center items-center w-6 h-6 tracking-wider'>0</p>
+                </button>
+                <button className='relative'>
+                    <SlHandbag className='text-[25px]'/>
+                    <p className='bg-[#FD4B6B] absolute -top-3 -right-2.5 rounded-full text-white font-semibold text-xs flex justify-center items-center w-6 h-6'>9+</p>
+                </button>
               </div>
             </div>
           </div>
         </div>
+
         <div className='hidden lg:block shadow-md'>
           <div className='2xl:px-3 xl:px-20 px-10 max-w-[1320px] h-[50px] mx-auto flex items-center justify-between'>
               <div className='h-full flex items-center'>
                 <div className='relative h-full 2xl:w-[306px] xl:w-[261px] w-[230px]'>
                   <div onClick={handleDropdown} className='select-none h-full 2xl:w-[306px] xl:w-[261px] w-[230px] bg-[#0989FF] hover:bg-[#010F1C] transition-all duration-500 px-7 cursor-pointer flex justify-between items-center'>
                     <div className='flex items-center h-full space-x-2'>
-                       <HiOutlineMenuAlt2 className=' text-2xl text-white' />
-                       <p className=' font-semibold text-gray-50 text-sm'>All Categories</p>
+                       <HiOutlineMenuAlt2 className='text-2xl text-white' />
+                       <p className='font-semibold text-gray-50 text-sm'>All Categories</p>
                     </div>  
                     <MdKeyboardArrowDown className='text-2xl text-white'/>
                   </div>
-                    {/* <DropdownCategories dropdown={dropdown}/> */}
                 </div>
                 <div className='flex items-center space-x-7 pl-8 text-sm font-semibold text-gray-800'>
-                  <Link href={"/"}>
-                     Home
-                  </Link>                 
-                  <Link href={"/"}>
-                     Shop
-                  </Link>                 
-                  <Link href={"/"}>
-                     Products
-                  </Link>                 
-                  <Link href={"/"}>
-                     Coupons
-                  </Link>                 
-                  <Link href={"/"}>
-                     Blog
-                  </Link>                 
-                  <Link href={"/"}>
-                     Contact
-                  </Link>                   
+                  <Link href="/">Home</Link>
+                  <Link href="/">Shop</Link>
+                  <Link href="/">Products</Link>
+                  <Link href="/">Coupons</Link>
+                  <Link href="/">Blog</Link>
+                  <Link href="/">Contact</Link>
                 </div>
               </div>
               <div className='flex items-center space-x-2'>
                  <div>
                    <TbPhoneCall className='text-[#0989FF] text-2xl'/>
                  </div>
-                 <div className=' -space-y-1.5'>
+                 <div className='-space-y-1.5'>
                   <div className='text-[12.5px] font-semibold text-gray-500 -tracking-wide'>Hotline:</div>
-                   <div className='text-[14px] font-semibold text-gray-700 -tracking-wide'>+(885 ) 763 282 46</div>
+                   <div className='text-[14px] font-semibold text-gray-700 -tracking-wide'>+(885) 763 282 46</div>
                  </div>
               </div>
-          </div>     
+          </div>
         </div>
 
         <div className='lg:hidden flex items-center justify-between shadow shadow-gray-300 md:pl-8 md:pr-9 pl-3.5 pr-4 h-[65px]'>
@@ -234,7 +204,6 @@ function Header() {
               />
             </div>
           </div>
-
           <div className='bg-white'>
             <div className='flex items-center space-x-5'>
               <button className='relative'>
@@ -249,7 +218,7 @@ function Header() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
