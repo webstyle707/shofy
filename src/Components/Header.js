@@ -22,13 +22,12 @@ function Header() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    const targetNode = document.getElementById('your-element-id');
+    // Ensure the targetNode exists
+    const targetNode = document.getElementById('your-element-id') || document.body;
     const callback = (mutationsList) => {
       for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
@@ -40,9 +39,7 @@ function Header() {
     };
     const observer = new MutationObserver(callback);
     const config = { attributes: true, childList: true, subtree: true };
-    if (targetNode) {
-      observer.observe(targetNode, config);
-    }
+    observer.observe(targetNode, config);
     return () => observer.disconnect();
   }, []);
 
@@ -95,7 +92,7 @@ function Header() {
           </div>
         </div>
 
-        {/* <div className='hidden lg:block h-[104px] border-b border-gray-200'>
+        <div className='hidden lg:block h-[104px] border-b border-gray-200'>
           <div className='max-w-[1320px] mx-auto flex items-center justify-between h-full 2xl:px-3 xl:px-20 px-10'>
             <div className='w-[135px] h-[135px] relative'>
               <Image
@@ -155,9 +152,9 @@ function Header() {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
-        {/* <div className='hidden lg:block shadow-md'>
+        <div className='hidden lg:block shadow-md'>
           <div className='2xl:px-3 xl:px-20 px-10 max-w-[1320px] h-[50px] mx-auto flex items-center justify-between'>
               <div className='h-full flex items-center'>
                 <div className='relative h-full 2xl:w-[306px] xl:w-[261px] w-[230px]'>
@@ -188,9 +185,9 @@ function Header() {
                  </div>
               </div>
           </div>
-        </div> */}
+        </div>
 
-        {/* <div className='lg:hidden flex items-center justify-between shadow shadow-gray-300 md:pl-8 md:pr-9 pl-3.5 pr-4 h-[65px]'>
+        <div className='lg:hidden flex items-center justify-between shadow shadow-gray-300 md:pl-8 md:pr-9 pl-3.5 pr-4 h-[65px]'>
           <div>
             <div className='w-[135px] h-[135px] relative'>
               <Image
@@ -215,7 +212,7 @@ function Header() {
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
