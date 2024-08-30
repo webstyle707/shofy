@@ -1,5 +1,5 @@
 "use client";
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 // import DropdownCategories from './DropdownCategories';
@@ -18,7 +18,7 @@ import { TbPhoneCall } from "react-icons/tb";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 function Header() {
-  const [dropdown,setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   const handleDropdown = () => {
     setDropdown(!dropdown);
   };
@@ -60,12 +60,12 @@ function Header() {
   return (
     <div>
       <div className={`bg-white w-full fixed left-0 z-30 top-0 -translate-y-28 
-        ${scrollY >= 250?"transition-all duration-300 top-0 translate-y-0":"transition-all duration-300 -translate-y-28"}`}>
-         {/* <Chilheader/>
-         <ChildSmHeader/> */}
+        ${scrollY >= 250 ? "transition-all duration-300 top-0 translate-y-0" : "transition-all duration-300 -translate-y-28"}`}>
+        {/* <Chilheader/>
+        <ChildSmHeader/> */}
       </div>
       
-      <div className=''>
+      <div>
         <div className='hidden md:block bg-[#010F1C]'>
           <div className='max-w-[1320px] mx-auto flex items-center justify-between 2xl:pl-[9px] 2xl:pr-[12px] xl:px-20 lg:px-10 md:pl-8 md:pr-9'>
             <div className='flex items-center space-x-[7px]'>
@@ -73,21 +73,18 @@ function Header() {
                 <Image
                   className='w-[28px]'
                   src="/Assets/car.png"
-                  alt="Logo"
-                  width={300}
-                  height={300}
-                  style={{ height: 'auto', objectFit: 'contain' }} 
+                  alt="Car"
+                  width={28}
+                  height={28}
+                  style={{ objectFit: 'contain' }} 
                   priority
                 />
-
               </div>
               <p className='text-xs font-semibold text-gray-300'>FREE Express Shipping On Orders $570+</p>
             </div>
             <div className='flex items-center justify-center space-x-4'>
               <div className='flex items-center space-x-1'>
-                 <p className='text-xs text-gray-100 font-semibold'>
-                    English
-                 </p>
+                 <p className='text-xs text-gray-100 font-semibold'>English</p>
                  <IoIosArrowDown className='text-gray-100 text-[15px] -translate-y-[1px]' />
               </div>
   
@@ -111,17 +108,17 @@ function Header() {
         <div className='hidden lg:block h-[104px] border-b border-gray-200'>
           <div className='max-w-[1320px] mx-auto flex items-center justify-between h-full 2xl:px-3 xl:px-20 px-10'>
             <div className=''>
-                <div className='w-[135px] h-[135px] relative'>
-                  <Image
-                    className='w-full h-full'
-                    src="/Assets/logo.png"
-                    alt="Logo"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 135px" 
-                    style={{ objectFit: 'contain' }} 
-                    priority
-                  />
-                </div>
+              <div className='w-[135px] h-[135px] relative'>
+                <Image
+                  className='w-full h-full'
+                  src="/Assets/logo.png"
+                  alt="Logo"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 135px" 
+                  style={{ objectFit: 'contain' }} 
+                  priority
+                />
+              </div>
             </div>    
             <div className='xl:pl-24 2xl:pl-6'>
                <div className='2xl:w-[554px] max-w-[554px] border-2 border-[#0989FF] h-[50px] flex items-center'>
@@ -164,7 +161,7 @@ function Header() {
                   <button>
                     <RiArrowUpDownFill className='text-[25px]'/>
                   </button>
-                  <button className=' relative'>
+                  <button className='relative'>
                       <IoMdHeartEmpty className='text-[27px]'/>
                       <p className='bg-[#FD4B6B] absolute -top-3 -right-2.5 rounded-full text-white font-semibold text-xs flex justify-center items-center w-6 h-6 tracking-wider'>0</p>
                   </button>
@@ -223,7 +220,7 @@ function Header() {
           </div>     
         </div>
 
-        <div className='lg:hidden flex items-center justify-between  shadow shadow-gray-300 md:pl-8 md:pr-9 pl-3.5 pr-4 h-[65px]'>
+        <div className='lg:hidden flex items-center justify-between shadow shadow-gray-300 md:pl-8 md:pr-9 pl-3.5 pr-4 h-[65px]'>
           <div>
             <div className='w-[135px] h-[135px] relative'>
               <Image
@@ -252,7 +249,6 @@ function Header() {
         </div>
       </div>
     </div>
-
   )
 }
 
